@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#050814" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>3D Weltall Simulation</title>
+<title>Starfleet Explorer – Star Trek Space Game</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%23FFC94D'/%3E%3Cellipse cx='16' cy='16' rx='14' ry='5' stroke='%236EA8FF' fill='none' stroke-width='1.5' transform='rotate(-20 16 16)'/%3E%3C/svg%3E" />
 <style>
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -249,7 +249,7 @@
     body.sheet-open.ship-on.touch #joy { bottom:auto; top:calc(180px + env(safe-area-inset-top)); left:auto; right:10px; width:96px; height:96px; opacity:.92; }
     #res { top:calc(60px + env(safe-area-inset-top)); bottom:auto; left:8px; right:8px; transform:none; font-size:12px;
       gap:10px; padding:7px 12px; justify-content:flex-start; max-width:none; }
-    body.perf-on #res { right:96px; }
+    body.perf-on #res { right:132px; }
     #diplo { top:auto; bottom:0; left:0; right:0; width:auto; max-width:none; max-height:72vh; border-radius:18px 18px 0 0;
       padding-bottom:env(safe-area-inset-bottom); }
     #build { top:auto; bottom:0; left:0; right:0; width:auto; max-width:none; max-height:72vh; border-radius:18px 18px 0 0;
@@ -292,10 +292,10 @@
 
 <div id="hud-top">
   <button class="chip icon" id="btn-menu" title="Menü (Planeten, Ansicht, Spiel)">☰</button>
-  <button class="chip icon" id="btn-profile" title="Commander-Profil">🧑‍🚀</button>
+  <button class="chip icon" id="btn-profile" title="Captain-Profil">🖖</button>
   <div class="title">
     <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="6" fill="#FFC94D"/><ellipse cx="16" cy="16" rx="13" ry="5" stroke="#6EA8FF" stroke-width="1.4" transform="rotate(-20 16 16)"/><circle cx="27" cy="11" r="1.6" fill="#9FC2FF"/></svg>
-    <div><h1>3D <span>Weltall Simulation</span></h1><div class="sub">Sonnensystem &bull; interaktiv &bull; Three.js</div></div>
+    <div><h1>STARFLEET <span>Explorer</span></h1><div class="sub">Star Trek &bull; Deep Space &bull; Endlos-Mission</div></div>
   </div>
   <div class="spacer"></div>
   <button class="chip icon" id="btn-ui" title="Interface ein-/ausblenden (H)">👁</button>
@@ -308,50 +308,51 @@
     <button id="drawer-close" title="Schließen (ESC)">✕</button>
   </div>
   <div id="drawer-body">
-    <h3>🧑‍🚀 Commander</h3>
+    <h3>🖖 Captain</h3>
     <div id="cmdr-card"></div>
     <div id="cmdr-list"></div>
     <div class="dgrid">
-      <button class="chip" id="btn-cmdr-new">➕ Neuer Commander</button>
+      <button class="chip" id="btn-cmdr-new">➕ Neuer Captain</button>
       <button class="chip" id="btn-cmdr-del">🗑 Löschen</button>
     </div>
-    <h3>🪐 Planeten</h3>
+    <h3>🪐 Sektor Sol</h3>
     <nav id="planets-bar" aria-label="Planeten"></nav>
-    <h3>🚀 Spiel</h3>
+    <h3>🚀 Mission</h3>
     <div class="dgrid">
-      <button class="chip" id="btn-ship" title="Schiff steuern">🚀 Schiff</button>
-      <button class="chip" id="btn-diplo" title="Fraktionen, Bündnisse, Krieg & Handel">🤝 Diplo</button>
+      <button class="chip" id="btn-ship" title="Raumschiff steuern">🛸 Starship</button>
+      <button class="chip" id="btn-diplo" title="Erste Kontakte, Allianzen, Gefechte & Handel">🤝 Kontakte</button>
     </div>
     <h3>👁 Ansicht</h3>
     <div class="dgrid">
       <button class="chip active" id="btn-orbits">🛰 Orbits</button>
       <button class="chip active" id="btn-labels">🏷 Labels</button>
       <button class="chip active" id="btn-belts">☄ Asteroiden</button>
-      <button class="chip" id="btn-tour">▶ Tour</button>
-      <button class="chip" id="btn-reset">⌂ Reset</button>
+      <button class="chip" id="btn-tour">▶ Patrouille</button>
+      <button class="chip" id="btn-reset">⌂ Sol-Zentrum</button>
       <button class="chip" id="btn-real">Echte Größen</button>
     </div>
-    <h3>❓ Hilfe</h3>
-    <p class="help">Ziehen = Drehen · Scroll = Zoomen · Klick = Baumenü · Doppelklick = Zoom<br/>WASD / Joystick = Fliegen · ESC = Zurück · H = Interface an/aus</p>
+    <h3>❓ Starfleet-Handbuch</h3>
+    <p class="help">Ziehen = Drehen · Scroll = Zoomen · Klick = Außenposten-Menü · Doppelklick = Zoom<br/>WASD / Joystick = Impuls · Schiff = Warp-Erkundung · ESC = Zurück · H = Interface an/aus<br/>🖖 Lebe lang und in Frieden – scanne Anomalien für Wissenschaft!</p>
   </div>
 </aside>
 
 <div id="res" aria-label="Ressourcen">
   <span>💰 <b id="r-credits">500</b> ₡</span>
   <span>⚡ <b id="r-energy">0</b></span>
-  <span>👥 <b id="r-pop">12</b>/<b id="r-popcap">0</b></span>
+  <span>🧑‍✈️ <b id="r-pop">12</b>/<b id="r-popcap">0</b></span>
   <span>🔬 <b id="r-research">0</b></span>
-  <span>🛡 <b id="r-defense">0</b></span>
+  <span>🛡️ <b id="r-defense">0</b></span>
+  <span>🌌 <b id="r-scans">0</b></span>
 </div>
 
 <aside id="build" aria-label="Baumenü">
   <div id="build-head">
-    <div><div class="type" id="build-type">Kolonie</div><h2 id="build-planet">Erde</h2><div id="build-facts"></div></div>
+    <div><div class="type" id="build-type">Außenposten</div><h2 id="build-planet">Erde</h2><div id="build-facts"></div></div>
     <button id="build-close" title="Schließen (ESC)">✕</button>
   </div>
   <div id="build-found">
-    <p>Noch keine Kolonie auf diesem Planeten.<br/>Gründe eine Siedlung, um Gebäude zu errichten.</p>
-    <button id="btn-found">🚩 Kolonie gründen (200 ₡)</button>
+    <p>Noch kein Sternenflotten-Außenposten auf diesem Planeten.<br/>Errichte eine Station, um Module zu bauen.</p>
+    <button id="btn-found">🖖 Außenposten gründen (200 ₡)</button>
   </div>
   <div id="build-tabs" style="display:none">
     <button data-tab="zivil" class="active">🏠 Zivil</button>
@@ -368,11 +369,11 @@
 
 <aside id="diplo" aria-label="Diplomatie">
   <div id="diplo-head">
-    <div><div class="type">Galaktik</div><h2>Diplomatie</h2></div>
+    <div><div class="type">Erster Kontakt</div><h2>Galaktische Mächte</h2></div>
     <button id="diplo-close" class="build-close" title="Schließen (ESC)" style="margin-left:auto;flex:0 0 auto;width:34px;height:34px;border-radius:10px;cursor:pointer;border:1px solid rgba(120,160,255,.3);background:rgba(60,100,220,.15);color:#e2ecff;font-size:15px;">✕</button>
   </div>
   <div id="diplo-list"></div>
-  <div id="diplo-foot">Bündnisse geben +50 % Handel &amp; Flottenhilfe · Kriege bringen Beute, aber Raids</div>
+  <div id="diplo-foot">Allianzen geben +50 % Handel &amp; Flottenhilfe · Gefechte bringen Beute, aber Vergeltung · Qapla'!</div>
 </aside>
 
 <aside id="info">
@@ -380,7 +381,7 @@
     <button id="info-close" title="Schließen (ESC)">✕</button>
     <span class="chev">▾</span>
     <div class="type" id="info-type">Sternensystem</div>
-    <h2 id="info-name">Sonne</h2>
+    <h2 id="info-name">Sol</h2>
   </div>
   <p id="info-desc">Klicke einen Planeten an oder wähle ihn links aus. Mit der Maus zoomen &amp; drehen, mit WASD fliegen.</p>
   <dl id="info-data"></dl>
@@ -391,7 +392,7 @@
 </aside>
 
 <div id="bottom">
-  <label for="speed">Zeitraffer</label>
+  <label for="speed">Warp</label>
   <input id="speed" type="range" min="0" max="300" value="40" />
   <div id="clock">Tag 0 &bull; 40×</div>
 </div>
@@ -400,11 +401,11 @@
 
 <div id="register" aria-label="Registrierung">
   <div id="reg-card">
-    <div class="type">Commander-Registrierung</div>
-    <h2>Willkommen, Commander</h2>
-    <p>Registriere deinen Commander für das Endlos-Spiel.<br/>Jeder Commander hat einen eigenen Spielstand.</p>
-    <label for="reg-name">Rufname (2–16 Zeichen)</label>
-    <input id="reg-name" maxlength="16" placeholder="z. B. Nova" autocomplete="off" />
+    <div class="type">Starfleet-Akademie</div>
+    <h2>Willkommen, Captain</h2>
+    <p>Registriere deinen Captain für die Endlos-Mission.<br/>Jeder Captain hat einen eigenen Spielstand. 🖖</p>
+    <label for="reg-name">Captain-Name (2–16 Zeichen)</label>
+    <input id="reg-name" maxlength="16" placeholder="z. B. Picard" autocomplete="off" />
     <label>Avatar wählen</label>
     <div id="reg-avatars"></div>
     <div id="reg-err"></div>
@@ -597,7 +598,7 @@ function addBarButton(name, color, onClick){
   const b=document.createElement('button'); b.innerHTML=`<i style="background:${color}"></i>${name}`;
   b.onclick=onClick; bar.appendChild(b); return b;
 }
-addBarButton('Sonne','#FFC94D',()=>selectBody(null));
+addBarButton('Sol','#FFC94D',()=>selectBody(null));
 
 /* ---------- Spiel-HUD: Drawer, Kontext-Panel, Kino-Modus (früh definiert, da selectBody sie nutzt) ---------- */
 const drawerEl=document.getElementById('drawer'), infoEl=document.getElementById('info');
@@ -637,7 +638,7 @@ PLANETS.forEach((p)=>{
   bodies.push(body);
   body.barBtn = addBarButton(p.name, p.color, ()=>selectBody(body));
 });
-const sunLabel = makeLabel('Sonne');
+const sunLabel = makeLabel('SOL');
 const sunBody = { kind:'star', data:{ name:'Sonne', size:6 }, mesh:sun, label:sunLabel };
 
 /* Unsichtbare Touch-Trefferflächen: kleine Planeten sind mit dem Finger sonst kaum tippbar */
@@ -681,6 +682,43 @@ for(let i=0;i<Q.comets;i++){
   scene.add(c); comets.push({mesh:c, a:Math.random()*6.28, r:40+Math.random()*25, s:0.25+Math.random()*0.3});
 }
 
+/* ---------- Subraum-Anomalien (Erkundungs-Gameplay) ----------
+   Unbekannte Phänomene treiben im Sektor. Nahe heranfliegen scannt
+   sie automatisch: Wissenschaft + Credits + Logbuch-Eintrag. */
+const anomalies=[];
+const ANOMALY_TINTS=['rgba(180,120,255,1)','rgba(120,255,220,1)','rgba(255,150,220,1)','rgba(140,200,255,1)'];
+const ANOMALY_LORE=['Tachyonen-Wirbel kartiert','Quantensignatur entschlüsselt','Subraum-Riss vermessen','Antike Sonde geborgen','Neutrino-Nebel analysiert','Temporale Echos aufgezeichnet'];
+function spawnAnomaly(a){
+  const r=30+Math.random()*50, th=Math.random()*Math.PI*2;
+  a.mesh.position.set(Math.cos(th)*r,(Math.random()-0.5)*22,Math.sin(th)*r);
+  a.cool=0;
+}
+for(let i=0;i<5;i++){
+  const tint=ANOMALY_TINTS[i%ANOMALY_TINTS.length];
+  const m=new THREE.Mesh(new THREE.IcosahedronGeometry(0.7,0), new THREE.MeshBasicMaterial({ color:0xffffff, transparent:true, opacity:0.9 }));
+  const gl=new THREE.Sprite(new THREE.SpriteMaterial({ map:glowTexture(tint), transparent:true, opacity:0.85, depthWrite:false, blending:THREE.AdditiveBlending }));
+  gl.scale.setScalar(6); m.add(gl);
+  m.position.set(0,0,0); scene.add(m);
+  const a={ mesh:m, glow:gl, cool:0 };
+  spawnAnomaly(a); anomalies.push(a);
+}
+function checkAnomalies(shipPos){
+  anomalies.forEach(a=>{
+    if(a.cool>0){ a.cool-=1/60; return; }
+    if(shipPos.distanceTo(a.mesh.position)<4){
+      a.cool=5;
+      const sci=5+Math.floor(Math.random()*8), loot=25+Math.floor(Math.random()*60);
+      res.research+=sci; res.credits+=loot; res.scans=(res.scans||0)+1;
+      const lore=ANOMALY_LORE[Math.floor(Math.random()*ANOMALY_LORE.length)];
+      toast(`🌌 ${lore}! +${sci} Science, +${loot} ₡ (Scan ${res.scans})`);
+      try{ Game.emit('anomalyScanned',{sci,loot,total:res.scans}); }catch(e){}
+      refreshResUI(); saveGame();
+      setTimeout(()=>spawnAnomaly(a), 4000);
+      a.mesh.position.set(0,9999,0); // kurz ausblenden bis Respawn
+    }
+  });
+}
+
 /* ============================================================
    SPIELER-SCHIFF (Spiel-Template: steuerbares Entity)
    ============================================================ */
@@ -690,9 +728,21 @@ const ship = {
 };
 function buildShip(){
   if(ship.mesh) return;
-  const geo = new THREE.ConeGeometry(0.45, 1.7, 10);
-  geo.rotateX(Math.PI/2); // Spitze zeigt +Z (Blickrichtung)
-  const mesh = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color:0xd6e8ff }));
+  // Starfleet-Starship im Mini-Maßstab: Untertassensektion + Technik + 2 Warp-Gondeln
+  const mesh = new THREE.Group();
+  const hull = new THREE.MeshBasicMaterial({ color:0xd6e8ff });
+  const saucer = new THREE.Mesh(new THREE.CylinderGeometry(0.85,0.85,0.16,20), hull);
+  mesh.add(saucer);
+  const bridge = new THREE.Mesh(new THREE.SphereGeometry(0.16,10,8), new THREE.MeshBasicMaterial({ color:0x9fc2ff }));
+  bridge.position.y=0.16; mesh.add(bridge);
+  const eng = new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.28,0.9,10), hull);
+  eng.rotation.x=Math.PI/2; eng.position.set(0,-0.18,-0.7); mesh.add(eng);
+  [-0.62,0.62].forEach(x=>{
+    const nac = new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.11,1.5,8), new THREE.MeshBasicMaterial({ color:0x7fb2ff }));
+    nac.rotation.x=Math.PI/2; nac.position.set(x,-0.05,-0.55); mesh.add(nac);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map:glowTexture('rgba(255,90,90,1)'), transparent:true, opacity:0.85, depthWrite:false, blending:THREE.AdditiveBlending }));
+    glow.scale.setScalar(0.55); glow.position.set(x,-0.05,-1.35); mesh.add(glow);
+  });
   const engine = new THREE.Sprite(new THREE.SpriteMaterial({ map:glowTexture('rgba(120,200,255,1)'), transparent:true, opacity:0.9, depthWrite:false, blending:THREE.AdditiveBlending }));
   engine.scale.setScalar(2.2); engine.position.z = -1.1; mesh.add(engine);
   ship.engine = engine;
@@ -716,7 +766,7 @@ function spawnShip(){
   followTarget = shipMarker;
   const dest = ship.mesh.position.clone().add(new THREE.Vector3(-7, 4, 9));
   flyTo(dest, ship.mesh.position.clone());
-  toast('🚀 Schiff gestartet – Joystick / WASD zum Fliegen');
+  toast('🛸 USS gestartet – Impuls mit Joystick / WASD, Anomalien scannen!');
   Game.emit('shipSpawn', {});
 }
 function despawnShip(){
@@ -725,14 +775,14 @@ function despawnShip(){
   followTarget = null;
 }
 // Marker-Objekt, damit Follow-Logik Schiff & Planeten einheitlich behandelt
-const shipMarker = { kind:'ship', data:{ name:'Schiff', size:1 }, get mesh(){ return ship.mesh; } };
+const shipMarker = { kind:'ship', data:{ name:'Starship', size:1 }, get mesh(){ return ship.mesh; } };
 
 /* ============================================================
    GAME-API (Template-Schicht: Events, Entities, Hooks)
    Verwendung z. B.: SolarGame.on('enterOrbit', d => …)
    ============================================================ */
 const Game = {
-  version: '1.1.0',
+  version: '2.0.0-trek',
   entities: [sunBody, ...bodies],
   hooks: [],            // Game.hooks.push((dt, t) => …) – eigene Spiellogik einklinken
   _listeners: {},
@@ -765,8 +815,8 @@ function toast(msg, ms=2600){
   clearTimeout(toastTimer); toastTimer = setTimeout(()=>toastEl.classList.remove('show'), ms);
 }
 if(IS_TOUCH){
-  infoDesc.textContent = 'Tippe einen Planeten an oder wähle ihn unten aus. Ein Finger = Drehen, zwei Finger = Zoomen.';
-  setTimeout(()=>toast('👆 1 Finger = Drehen · 2 Finger = Zoom · Tippen = Baumenü', 3600), 1200);
+  infoDesc.textContent = 'Tippe einen Planeten für das Außenposten-Menü. Ein Finger = Drehen, zwei Finger = Zoomen.';
+  setTimeout(()=>toast('🖖 Captain: 1 Finger = Drehen · 2 Finger = Zoom · Tippen = Scannen & Bauen', 3600), 1200);
 }
 
 function fmt(n){ return n.toLocaleString('de-DE'); }
@@ -774,15 +824,15 @@ function selectBody(body, quiet=false){
   selected = body;
   if(followTarget && followTarget.kind === 'planet') followTarget = null;
   document.querySelectorAll('#planets-bar button').forEach(b=>b.classList.remove('active'));
-  if(!body){ infoType.textContent='Stern'; infoName.textContent='Sonne';
+  if(!body){ infoType.textContent='Stern'; infoName.textContent='Sol';
     infoDesc.textContent = IS_TOUCH
-      ? 'G2V-Hauptreihenstern: 99,86 % der Masse des Systems. Tippe einen Planeten für Details.'
-      : 'G2V-Hauptreihenstern: 99,86 % der Masse des Systems. Kerntemperatur 15 Mio °C. Klicke einen Planeten für Details.';
-    infoData.innerHTML=`<dt>Durchmesser</dt><dd>1,39 Mio km</dd><dt>Temperatur</dt><dd>5.505 °C</dd><dt>Alter</dt><dd>4,6 Mrd Jahre</dd>`;
+      ? 'Sol, Klasse G2V: Herz der Föderation. Tippe einen Planeten für Scan-Details.'
+      : 'Sol, Klasse G2V: Herz der Föderation. Sternenflotten-Kommando auf Erde. Klicke einen Planeten für Scan-Details.';
+    infoData.innerHTML=`<dt>Klasse</dt><dd>G2V Hauptreihe</dd><dt>Flotte</dt><dd>Sternenflotte</dd><dt>Alter</dt><dd>4,6 Mrd Jahre</dd>`;
     bar.children[0].classList.add('active'); try{closeBuild();}catch(e){} setInfoVisible(true); return; }
   body.barBtn.classList.add('active');
   const p=body.data;
-  infoType.textContent = p.dist<28 ? 'Gesteinsplanet' : (p.dist<46?'Gasriese':'Eisriese');
+  infoType.textContent = 'Sektor Sol · ' + (p.dist<28 ? 'Klasse M / Gestein' : (p.dist<46?'Gasriese':'Eisriese'));
   infoName.textContent = p.name + (p.discovered ? ' ✓' : '');
   infoDesc.textContent=p.desc;
   infoData.innerHTML=`<dt>Durchmesser</dt><dd>${p.d}</dd><dt>Entfernung</dt><dd>${p.e}</dd><dt>Umlaufzeit</dt><dd>${p.u}</dd>`;
@@ -841,14 +891,14 @@ btnLabels.onclick=()=>{ showLabels=!showLabels; btnLabels.classList.toggle('acti
 const btnBelts=document.getElementById('btn-belts');
 btnBelts.onclick=()=>{ beltsGroup.visible=!beltsGroup.visible; btnBelts.classList.toggle('active',beltsGroup.visible); };
 const btnTour=document.getElementById('btn-tour');
-btnTour.onclick=()=>{ tour=!tour; tourTimer=0; btnTour.classList.toggle('active',tour); btnTour.textContent=tour?'⏹ Tour stoppen':'▶ Tour'; if(tour){ tourIdx=(selected?bodies.indexOf(selected)+1:0)%bodies.length; selectBody(bodies[tourIdx]); focusSelected(); } };
+btnTour.onclick=()=>{ tour=!tour; tourTimer=0; btnTour.classList.toggle('active',tour); btnTour.textContent=tour?'⏹ Patrouille stoppen':'▶ Patrouille'; if(tour){ tourIdx=(selected?bodies.indexOf(selected)+1:0)%bodies.length; selectBody(bodies[tourIdx]); focusSelected(); } };
 const btnShip=document.getElementById('btn-ship');
 btnShip.onclick=()=>{
-  if(ship.active){ despawnShip(); btnShip.classList.remove('active'); toast('🛸 Schiff angedockt'); }
+  if(ship.active){ despawnShip(); btnShip.classList.remove('active'); toast('🛸 Starship angedockt – „Energie sparen, Number One.“'); }
   else { if(ship.mesh) spawnShip(); btnShip.classList.add('active'); }
 };
 document.getElementById('btn-reset').onclick=()=>{
-  tour=false; btnTour.classList.remove('active'); btnTour.textContent='▶ Tour';
+  tour=false; btnTour.classList.remove('active'); btnTour.textContent='▶ Patrouille';
   if(ship.active){ despawnShip(); btnShip.classList.remove('active'); }
   selected=null; followTarget=null; selectBody(null);
   flyTo(homePos(), new THREE.Vector3(0,0,0));
@@ -958,25 +1008,26 @@ function updateShip(ix, iz, dt){
   ship.trail.geometry.setDrawRange(0, ship.trailPts.length/3);
   checkTriggers();
 }
-/* Trigger-Zonen (Spiel-Template: Orbit betreten / Sonne zu nah) */
+/* Trigger-Zonen (Erkundung: Orbit-Scan / Sol zu nah) */
 const _tp = new THREE.Vector3();
 function checkTriggers(){
   ship.mesh.getWorldPosition(_tp);
+  checkAnomalies(_tp);
   bodies.forEach(b=>{
     b.mesh.getWorldPosition(_sv);
     const d = _tp.distanceTo(_sv);
     const r = b.data.size * b.mesh.scale.x;
     if(!b.discovered && d < r*3 + 1.5){
       b.discovered = true;
-      toast(`🪐 ${b.data.name}-Orbit erreicht!`);
+      toast(`🖖 Captain's Log: ${b.data.name} kartiert – neuer Sektor-Eintrag!`);
       Game.emit('enterOrbit', { name:b.data.name });
       if(selected === b) selectBody(b); // ✓-Markierung aktualisieren
     }
   });
   if(_tp.length() < 10.5){
     _sv.copy(_tp).normalize();
-    ship.vel.addScaledVector(_sv, 30*0.016); // Hitzeschild: Rückstoß
-    if(!checkTriggers.sunWarned){ toast('☀ Zu nah an der Sonne – Abdrehen!'); Game.emit('sunWarning', {}); }
+    ship.vel.addScaledVector(_sv, 30*0.016); // Deflektor: Rückstoß
+    if(!checkTriggers.sunWarned){ toast('☀ Warnung: Zu nah an Sol – Abdrehen, Captain!'); Game.emit('sunWarning', {}); }
     checkTriggers.sunWarned = true;
   } else checkTriggers.sunWarned = false;
 }
@@ -986,22 +1037,22 @@ function checkTriggers(){
    ============================================================ */
 const BUILDINGS = {
   zivil: [
-    { id:'wohn',   name:'Wohnkuppel',        icon:'🏠', desc:'Wohnraum für 40 Siedler, Steuern fließen', cost:100, time:8,  energy:0,   income:1, popCap:40 },
-    { id:'farm',   name:'Hydroponik-Farm',   icon:'🌾', desc:'Nahrung für schnelleres Bevölkerungswachstum', cost:80,  time:6,  energy:-2,  growth:1.2 },
-    { id:'labor',  name:'Forschungszentrum', icon:'🔬', desc:'Generiert Forschungspunkte',               cost:250, time:15, energy:-10, research:3 },
-    { id:'handel', name:'Handelsstation',    icon:'🏪', desc:'Handelsgewinne in Credits',                cost:300, time:20, energy:-6,  income:6 },
+    { id:'wohn',   name:'Crew-Quartiere',      icon:'🛏️', desc:'Quartiere für 40 Crewmitglieder, Soli fließen', cost:100, time:8,  energy:0,   income:1, popCap:40 },
+    { id:'farm',   name:'Hydroponik-Bucht',    icon:'🌾', desc:'Nahrung für schnelleres Crew-Wachstum', cost:80,  time:6,  energy:-2,  growth:1.2 },
+    { id:'labor',  name:'Wissenschaftslabor',  icon:'🔬', desc:'Generiert Forschung (Science)',               cost:250, time:15, energy:-10, research:3 },
+    { id:'handel', name:'Handelsdepot',        icon:'🏪', desc:'Handelsgewinne in Credits (Ferengi-Routen)',   cost:300, time:20, energy:-6,  income:6 },
   ],
   industrie: [
-    { id:'solar',  name:'Solarkraftwerk', icon:'☀️', desc:'+25 Energie aus Sonnenlicht',  cost:120, time:8,  energy:25 },
-    { id:'mine',   name:'Mine',           icon:'⛏️', desc:'Rohstoffe → Credits',          cost:150, time:10, energy:-5,  income:4 },
-    { id:'fabrik', name:'Fabrik',         icon:'🏭', desc:'Produktion → Credits',         cost:220, time:14, energy:-12, income:7 },
-    { id:'fusion', name:'Fusionsreaktor', icon:'⚛️', desc:'+60 Energie aus Kernfusion',   cost:500, time:25, energy:60 },
+    { id:'solar',  name:'Solarkollektoren', icon:'☀️', desc:'+25 Energie aus Sonnenlicht',  cost:120, time:8,  energy:25 },
+    { id:'mine',   name:'Dilithium-Mine',   icon:'💎', desc:'Dilithium → Credits',          cost:150, time:10, energy:-5,  income:4 },
+    { id:'fabrik', name:'Replikator-Werk',  icon:'🏭', desc:'Replikation → Credits',        cost:220, time:14, energy:-12, income:7 },
+    { id:'fusion', name:'Warpkern',         icon:'⚛️', desc:'+60 Energie aus Materie/Antimaterie', cost:500, time:25, energy:60 },
   ],
   militaer: [
-    { id:'turm',   name:'Geschützturm',   icon:'🎯', desc:'Planetare Verteidigung',              cost:180, time:10, energy:-8,  defense:15 },
-    { id:'schild', name:'Schildgenerator',icon:'🛡', desc:'Energieschild um die Kolonie',        cost:350, time:18, energy:-20, defense:40 },
-    { id:'werft',  name:'Werft',          icon:'🚧', desc:'Reparatur & Verteidigung',            cost:400, time:22, energy:-15, defense:25, income:2 },
-    { id:'silo',   name:'Raketensilo',    icon:'🚀', desc:'Abfangraketen gegen Angreifer',       cost:300, time:16, energy:-10, defense:30 },
+    { id:'turm',   name:'Phaserbank',      icon:'🔫', desc:'Planetare Verteidigung',              cost:180, time:10, energy:-8,  defense:15 },
+    { id:'schild', name:'Schildgenerator', icon:'🛡️', desc:'Deflektor-Schild um den Außenposten', cost:350, time:18, energy:-20, defense:40 },
+    { id:'werft',  name:'Raumdock',        icon:'🚧', desc:'Reparatur & Verteidigung',            cost:400, time:22, energy:-15, defense:25, income:2 },
+    { id:'silo',   name:'Torpedorampe',    icon:'🚀', desc:'Photonentorpedos gegen Angreifer',    cost:300, time:16, energy:-10, defense:30 },
   ],
 };
 const BUILD_BY_ID = {};
@@ -1017,7 +1068,7 @@ const LEGACY_SAVE = SAVE_KEY; // alter Schlüssel ohne Profil → wird einmalig 
    Konten bräuchten einen Server mit Datenbank.
    ============================================================ */
 const PROFILE_KEY = 'solar-profiles-v1';
-const AVATARS = ['🧑‍🚀','👩‍🚀','👨‍🚀','👽','🤖','🦊','🐺','🐙'];
+const AVATARS = ['🖖','🧑‍🚀','👩‍🚀','👨‍🚀','👽','🤖','🦊','🐙'];
 let profiles = { activeId:null, list:{} };
 let regAvatar = AVATARS[0];
 function saveKey(){ return 'solar-save-' + (profiles.activeId || 'noprofile'); }
@@ -1078,11 +1129,11 @@ document.getElementById('reg-name').addEventListener('keydown',e=>{
 /* Commander-Verwaltung im Drawer */
 function renderCommander(){
   const me=activeProfile();
-  document.getElementById('btn-profile').textContent = me ? me.avatar : '🧑‍🚀';
+  document.getElementById('btn-profile').textContent = me ? me.avatar : '🖖';
   const card=document.getElementById('cmdr-card');
   if(me){
     card.innerHTML=`<div class="ca">${me.avatar}</div><div><b>${escapeHtml(me.name)}</b><span>aktiv seit ${new Date(me.created).toLocaleDateString('de-DE')}</span></div>`;
-  } else card.innerHTML='<div><b>Kein Commander</b><span>Bitte registrieren</span></div>';
+  } else card.innerHTML='<div><b>Kein Captain</b><span>Bitte bei der Sternenflotte melden</span></div>';
   const others=Object.values(profiles.list).filter(p=>!me||p.id!==me.id);
   const list=document.getElementById('cmdr-list');
   list.innerHTML=(others.length?'<div style="font-size:11px;opacity:.6;margin:8px 0 5px">WECHSELN</div>':'')
@@ -1117,7 +1168,7 @@ document.getElementById('btn-cmdr-del').onclick=(e)=>{
   location.reload();
 };
 
-const res = { credits:500, research:0, pop:12, popCap:0, income:0, researchRate:0, growth:0.2, energy:0, defense:0, eff:1 };
+const res = { credits:500, research:0, pop:12, popCap:0, income:0, researchRate:0, growth:0.2, energy:0, defense:0, eff:1, scans:0 };
 
 function ensureColony(body){ if(!body.colony) body.colony = { done:[], queue:[] }; return body.colony; }
 
@@ -1149,10 +1200,10 @@ function ensureStation(body){
 
 /* Speichern / Laden */
 function saveGame(){
-  if(!profiles.activeId) return; // ohne registrierten Commander kein Save
+  if(!profiles.activeId) return; // ohne registrierten Captain kein Save
   try{
     localStorage.setItem(saveKey(), JSON.stringify({
-      res:{ credits:Math.floor(res.credits), research:Math.floor(res.research), pop:Math.floor(res.pop) },
+      res:{ credits:Math.floor(res.credits), research:Math.floor(res.research), pop:Math.floor(res.pop), scans:res.scans||0 },
       colonies:bodies.filter(b=>b.colony).map(b=>({ n:b.data.name, done:b.colony.done, queue:b.colony.queue })),
       factions:FACTIONS.map(f=>({ id:f.id, fleet:Math.round(f.fleet), rel:Math.round(f.rel), status:f.status, route:f.route })),
     }));
@@ -1162,7 +1213,7 @@ function loadGame(){
   let s=null;
   try{ s=JSON.parse(localStorage.getItem(saveKey()) || localStorage.getItem(LEGACY_SAVE)); }catch(e){}
   if(!s) return;
-  res.credits=s.res?.credits ?? 500; res.research=s.res?.research ?? 0; res.pop=s.res?.pop ?? 12;
+  res.credits=s.res?.credits ?? 500; res.research=s.res?.research ?? 0; res.pop=s.res?.pop ?? 12; res.scans=s.res?.scans ?? 0;
   (s.colonies||[]).forEach(c=>{
     const b=bodies.find(x=>x.data.name===c.n); if(!b) return;
     b.colony={ done:(c.done||[]).filter(id=>BUILD_BY_ID[id]), queue:(c.queue||[]).filter(q=>BUILD_BY_ID[q.id]) };
@@ -1203,14 +1254,16 @@ function colonyTick(dt){
 /* ---------- Ressourcenleiste ---------- */
 const rCredits=document.getElementById('r-credits'), rEnergy=document.getElementById('r-energy'),
       rPop=document.getElementById('r-pop'), rPopCap=document.getElementById('r-popcap'),
-      rResearch=document.getElementById('r-research'), rDefense=document.getElementById('r-defense');
+      rResearch=document.getElementById('r-research'), rDefense=document.getElementById('r-defense'),
+      rScans=document.getElementById('r-scans');
 function refreshResUI(){
   rCredits.textContent=fmt(Math.floor(res.credits));
   rEnergy.textContent=(res.energy>=0?'+':'')+res.energy;
   rEnergy.className=res.energy<0?'neg':'';
-  rEnergy.parentElement.title = res.energy<0 ? 'Energiemangel! Produktion nur zu 50 %.' : 'Energiebilanz';
+  rEnergy.parentElement.title = res.energy<0 ? 'Energiemangel! Produktion nur zu 50 %.' : 'Warp-Plasma-Bilanz';
   rPop.textContent=Math.floor(res.pop); rPopCap.textContent=res.popCap;
   rResearch.textContent=Math.floor(res.research); rDefense.textContent=res.defense;
+  if(rScans) rScans.textContent=res.scans||0;
 }
 
 /* ---------- Baumenü ---------- */
@@ -1299,12 +1352,12 @@ function refreshAfford(){
 function foundColony(){
   if(buildBody.colony) return;
   const owner=homeFaction(buildBody.data.name);
-  if(owner){ toast(`🛡 ${buildBody.data.name} gehört zum ${owner.name} – Besiedlung blockiert!`); return; }
-  if(res.credits<FOUND_COST){ toast('💰 Nicht genug Credits für eine Kolonie!'); return; }
+  if(owner){ toast(`🛡️ ${buildBody.data.name} gehört zu ${owner.name} – Außenposten blockiert!`); return; }
+  if(res.credits<FOUND_COST){ toast('💰 Nicht genug Credits für einen Außenposten!'); return; }
   res.credits-=FOUND_COST;
   ensureColony(buildBody); ensureStation(buildBody);
   recompute(); refreshResUI(); renderBuildMenu(); saveGame();
-  toast(`🚩 Kolonie auf ${buildBody.data.name} gegründet!`);
+  toast(`🖖 Außenposten auf ${buildBody.data.name} gegründet! „Möge der Frieden mit dir sein."`);
   Game.emit('colonyFounded',{ planet:buildBody.data.name });
 }
 function startBuild(id){
@@ -1330,7 +1383,7 @@ document.getElementById('build-wipe').onclick=()=>{
   bodies.forEach(b=>{ b.colony=null;
     if(b.colonyVis){ b.mesh.remove(b.colonyVis); b.colonyVis=null; }
     b.label.textContent=b.data.name; });
-  Object.assign(res,{ credits:500, research:0, pop:12, popCap:0, income:0, researchRate:0, growth:0.2, energy:0, defense:0, eff:1 });
+  Object.assign(res,{ credits:500, research:0, pop:12, popCap:0, income:0, researchRate:0, growth:0.2, energy:0, defense:0, eff:1, scans:0 });
   resetDiplo();
   try{ localStorage.removeItem(saveKey()); }catch(e){}
   refreshResUI(); renderBuildMenu();
@@ -1349,9 +1402,9 @@ Game.colonies = ()=>bodies.filter(b=>b.colony).map(b=>({ planet:b.data.name, don
    dieselben SolarGame-Events später zwischen Spielern synchronisieren.
    ============================================================ */
 const FACTIONS = [
-  { id:'krell', name:'Krell-Imperium',     icon:'👹', color:'#ff5b5b', home:'Jupiter', aggr:0.8, trade:0.3, fleet:120, fleetMax:320, rel:-10, base:-20, status:'neutral', route:false, demand:null, atkCd:0, raidT:10, demandT:50 },
-  { id:'vega',  name:'Vega-Konföderation', icon:'🕊', color:'#6bff8f', home:'Saturn',  aggr:0.2, trade:0.9, fleet:60,  fleetMax:220, rel:30,  base:40,  status:'neutral', route:false, demand:null, atkCd:0, raidT:10, demandT:70 },
-  { id:'nyx',   name:'Nyx-Syndikat',       icon:'🌙', color:'#c49aff', home:'Neptun',  aggr:0.5, trade:0.6, fleet:80,  fleetMax:260, rel:0,   base:0,   status:'neutral', route:false, demand:null, atkCd:0, raidT:10, demandT:60 },
+  { id:'krell', name:'Klingonisches Reich', icon:'🗡️', color:'#ff5b5b', home:'Jupiter', aggr:0.8, trade:0.3, fleet:120, fleetMax:320, rel:-10, base:-20, status:'neutral', route:false, demand:null, atkCd:0, raidT:10, demandT:50 },
+  { id:'vega',  name:'Romulanisches Imperium', icon:'🦅', color:'#6bff8f', home:'Saturn',  aggr:0.35, trade:0.7, fleet:60,  fleetMax:220, rel:10,  base:10,  status:'neutral', route:false, demand:null, atkCd:0, raidT:10, demandT:70 },
+  { id:'nyx',   name:'Borg-Kollektiv',       icon:'◼️', color:'#c49aff', home:'Neptun',  aggr:0.65, trade:0.3, fleet:90,  fleetMax:300, rel:-20,   base:-20,   status:'neutral', route:false, demand:null, atkCd:0, raidT:10, demandT:60 },
 ];
 const FACTIONS_INIT = JSON.parse(JSON.stringify(FACTIONS));
 let diploAcc = 0;
@@ -1378,12 +1431,12 @@ function gift(f){
 function proposeAlly(f){
   if(f.status!=='neutral'||f.rel<60) return;
   f.status='allied';
-  toast(`🤝 Bündnis mit ${f.name} geschlossen! +50 % Handel, Flottenhilfe.`); Game.emit('ally',{faction:f.id});
+  toast(`🤝 Allianz mit ${f.name} besiegelt! +50 % Handel, Flottenhilfe. „Frieden durch Stärke."`); Game.emit('ally',{faction:f.id});
   renderDiplo(); updateDiploBadge(); saveGame();
 }
 function breakAlly(f){
   f.status='neutral'; f.rel=30;
-  toast(`🏳 Bündnis mit ${f.name} aufgekündigt.`); Game.emit('breakAlly',{faction:f.id});
+  toast(`🏳 Allianz mit ${f.name} aufgekündigt.`); Game.emit('breakAlly',{faction:f.id});
   renderDiplo(); updateDiploBadge(); saveGame();
 }
 function startWar(f, byThem=false){
@@ -1391,14 +1444,14 @@ function startWar(f, byThem=false){
   const betrayed = f.status==='allied';
   f.status='war'; f.rel=-100; f.raidT=12;
   if(betrayed) FACTIONS.forEach(o=>{ if(o!==f&&o.status==='neutral') o.rel-=10; });
-  toast(byThem?`🚨 ${f.name} erklärt dir den KRIEG!`:`⚔️ Du erklärst ${f.name} den Krieg!${betrayed?' (Verrat! Andere misstrauen dir.)':''}`);
+  toast(byThem?`🚨 ${f.name} eröffnet das Feuer – ROTER ALARM!`:`⚔️ Du eröffnest das Feuer auf ${f.name}!${betrayed?' (Vertragsbruch! Andere misstrauen dir.)':''}`);
   Game.emit('war',{faction:f.id, byThem});
   renderDiplo(); updateDiploBadge(); saveGame();
 }
 function makePeace(f){
-  if(res.credits<150){ toast('💰 Frieden kostet 150 ₡ Tribut!'); return; }
+  if(res.credits<150){ toast('💰 Waffenstillstand kostet 150 ₡!'); return; }
   res.credits-=150; f.status='neutral'; f.rel=-10; f.raidT=15;
-  toast(`🕊 Frieden mit ${f.name} geschlossen.`); Game.emit('peace',{faction:f.id});
+  toast(`🕊 Waffenstillstand mit ${f.name}. „Wir kommen in Frieden."`); Game.emit('peace',{faction:f.id});
   refreshResUI(); renderDiplo(); updateDiploBadge(); saveGame();
 }
 function toggleRoute(f){
@@ -1413,7 +1466,7 @@ function toggleRoute(f){
 }
 function playerAttack(f){
   if(f.status!=='war'||f.atkCd>0) return;
-  if(res.defense<=0){ toast('🛡 Baue Militärgebäude, um anzugreifen!'); return; }
+  if(res.defense<=0){ toast('Baue Phaser & Schilde, um anzugreifen!'); return; }
   f.atkCd=15;
   const atk=res.defense*res.eff*(0.8+Math.random()*0.4);
   if(atk>f.fleet){
@@ -1452,7 +1505,7 @@ function enemyRaid(f){
     }
     const steal=Math.min(Math.floor(res.credits*0.2),250); res.credits-=steal;
     f.fleet=Math.max(0,f.fleet-8);
-    toast(`🔥 ${f.name} überfällt Kolonien! ${destroyed?destroyed.name+' zerstört! ':''}${steal} ₡ geraubt.`);
+    toast(`🔥 ${f.name} greift Außenposten an! ${destroyed?destroyed.name+' zerstört! ':''}${steal} ₡ geraubt. „Schilde halten nicht!"`);
     Game.emit('raid',{faction:f.id,destroyed:destroyed&&destroyed.id,steal});
   }else if(atk>def*1.2+10){
     const steal=Math.min(Math.floor(res.credits*0.1),120); res.credits-=steal;
@@ -1534,15 +1587,15 @@ function renderDiplo(){
     const fill=r>=0?`left:50%;width:${r/2}%;background:#5be08a;`:`left:${50+r/2}%;width:${-r/2}%;background:#ff6b7a;`;
     let btns='';
     if(f.status==='neutral'){
-      btns=`<button data-a="gift" ${res.credits<100?'disabled':''} title="100 ₡ → +12">🎁 Schenken</button>
-        <button data-a="ally" class="good" ${f.rel<60?'disabled':''} title="Braucht +60">🤝 Bündnis</button>
-        <button data-a="war" class="danger">⚔️ Krieg</button>`;
+      btns=`<button data-a="gift" ${res.credits<100?'disabled':''} title="100 ₡ → +12">🎁 Tribut</button>
+        <button data-a="ally" class="good" ${f.rel<60?'disabled':''} title="Braucht +60">🤝 Allianz</button>
+        <button data-a="war" class="danger">🔥 Angriff</button>`;
     }else if(f.status==='allied'){
-      btns=`<button data-a="gift" ${res.credits<100?'disabled':''}>🎁 Schenken</button>
+      btns=`<button data-a="gift" ${res.credits<100?'disabled':''}>🎁 Tribut</button>
         <button data-a="break">🏳️ Kündigen</button>`;
     }else{
-      btns=`<button data-a="attack" class="danger" id="atk-${f.id}" ${f.atkCd>0?'disabled':''}>${f.atkCd>0?`⚔️ (${Math.ceil(f.atkCd)}s)`:'⚔️ Angreifen'}</button>
-        <button data-a="peace" class="good" ${res.credits<150?'disabled':''} title="150 ₡ Tribut">🕊 Frieden</button>`;
+      btns=`<button data-a="attack" class="danger" id="atk-${f.id}" ${f.atkCd>0?'disabled':''}>${f.atkCd>0?`🔥 (${Math.ceil(f.atkCd)}s)`:'🔥 Feuern!'}</button>
+        <button data-a="peace" class="good" ${res.credits<150?'disabled':''} title="150 ₡">🕊 Frieden</button>`;
     }
     const routeHtml=f.route
       ? `<div class="route-on" id="route-${f.id}">${f.status==='war'?'⏸ Route blockiert (Krieg)':`💱 Route: +${routeRate(f).toFixed(1)} ₡/s`} <button data-a="route" style="margin-left:6px;font-size:11px;padding:4px 9px;border-radius:7px;cursor:pointer;border:1px solid rgba(255,140,140,.4);background:rgba(120,30,30,.25);color:#ffc9c9;">Kündigen</button></div>`
@@ -1596,7 +1649,7 @@ function updateDiploLive(){
 function updateDiploBadge(){
   const wars=FACTIONS.filter(f=>f.status==='war').length;
   const dems=FACTIONS.filter(f=>f.demand).length;
-  btnDiplo.textContent=wars?`🚨 Krieg (${wars})`:(dems?'📜 Diplo!':'🤝 Diplo');
+  btnDiplo.textContent=wars?`🚨 Gefecht (${wars})`:(dems?'📜 Kontakt!':'🤝 Kontakte');
   btnDiplo.classList.toggle('active',wars===0&&dems===0);
 }
 btnDiplo.onclick=()=>{ diploEl.classList.contains('open')?closeDiplo():openDiplo(); };
@@ -1703,6 +1756,7 @@ function animate(){
     belt1.rotation.y += dt*0.02*(wob+0.2);
     belt2.rotation.y += dt*0.008*(wob+0.2);
     comets.forEach(c=>{ c.a+=dt*c.s*(wob+0.3); c.mesh.position.set(Math.cos(c.a)*c.r, Math.sin(c.a*0.7)*8, Math.sin(c.a)*c.r); });
+    anomalies.forEach((a,i)=>{ a.mesh.rotation.y+=dt*0.8; a.mesh.rotation.x+=dt*0.3; const s=6+Math.sin(t*2+i)*0.8; a.glow.scale.setScalar(s); });
     sun.rotation.y += dt*0.02;
     sunGlow.material.opacity = 0.82+Math.sin(t*3)*0.08;
     colonyTick(dt);
@@ -1736,7 +1790,8 @@ function animate(){
   updateLabels();
 
   const yrs=(simDays/365);
-  const txt=`Tag ${fmt(Math.floor(simDays))} • ${yrs>=1?yrs.toFixed(1)+' Jahre':''} ${timeScale}×`;
+  const stardate=(2400+yrs*10).toFixed(1).replace('.',',');
+  const txt=`Sternzeit ${stardate} • Warp ${timeScale}×`;
   if(txt!==lastClockText){ clockEl.textContent=txt; lastClockText=txt; }
   renderer.render(scene,camera);
 }
@@ -1761,9 +1816,9 @@ loadProfiles();
 if(!activeProfile() && adoptLegacySave()){
   // Bestandsspieler ohne Profil: Spielstand wird übernommen
   const id='c'+Date.now().toString(36)+'00';
-  profiles.list[id]={ id, name:'Commander', avatar:'🧑‍🚀', created:Date.now() };
+  profiles.list[id]={ id, name:'Kirk', avatar:'🖖', created:Date.now() };
   profiles.activeId=id; persistProfiles();
-  setTimeout(()=>toast('📦 Alter Spielstand übernommen. Willkommen zurück, Commander!'),1800);
+  setTimeout(()=>toast('📦 Alter Logbuch-Eintrag übernommen. Willkommen zurück, Captain!'),1800);
 }
 loadGame();
 refreshResUI();
